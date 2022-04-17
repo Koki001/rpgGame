@@ -1,6 +1,6 @@
 // Playing.js
 import { useEffect, useState } from "react"
-import { Warrior, Ranger, Mage } from "./PlayerStats"
+import { Warrior, Ranger, Mage } from "./PlayerTypes"
 
 const Playing = function(props) {
 
@@ -19,7 +19,6 @@ const Playing = function(props) {
       setChosenCharacter(Mage)
     }
   }, [])
-  console.log(chosenCharacter)
   if (chosenCharacter.name) {
     return (
       <>

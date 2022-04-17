@@ -1,0 +1,11 @@
+.battleScreen {
+  width: 80%;
+}
+.battleContainer {
+  display: flex;
+  justify-content: space-between;
+  img {
+    height: 300px;
+    width: 230px;
+  }
+}

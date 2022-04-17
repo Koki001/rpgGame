@@ -3,9 +3,9 @@
 import { useState } from "react"
 import CustomCharacter from "./CustomCharacter"
 import Playing from "./Playing"
-import { Warrior, Ranger, Mage } from "./PlayerStats"
+import { Warrior, Ranger, Mage } from "./PlayerTypes"
 
-const GameMenu = function() {
+const GameMenu = function(props) {
 
   const [characterSelect, setCharacterSelect] = useState()
   const [difficultySelect, setDifficultySelect] = useState()
@@ -21,16 +21,16 @@ const GameMenu = function() {
   const handleBackButton = function (e) {
     setCreateCharacter(e)
   }
-  const handleGameStart = function() {
-    setGameStart(!gameStart)
+  const handleGameStart = function(e) {
+    props.start(e)
+    props.gameInfo({class: characterSelect, difficulty: difficultySelect})
+    setGameStart(true)
   }
   const handleCharacterSelect = function(e) {
     setCharacterSelect(e.target.value)
-    console.log(e.target)
   }
   const handleDifficultySelect = function(e) {
     setDifficultySelect(e.target.value)
-    console.log(e.target)
   }
   const warriorStats = <>
                         <p>Name: {Warrior.name}</p>
@@ -56,8 +56,6 @@ const GameMenu = function() {
                       <p>Special Attack: {Mage.attack.special}</p>
                       <p>Defense: {Mage.defense}</p>
                     </>
-
-
   return (
     
     createCharacter === false && gameStart === false ?
@@ -67,11 +65,11 @@ const GameMenu = function() {
         <form className="characterSelect" action=""
         onChange={handleCharacterSelect}>
           <input type="radio" id="warrior" name="character" value={"warrior"}/>
-          <label className="charImgWarrior" htmlFor="warrior"><img src={"Warrior.png"} alt="" />Warrior<p className="selectStats warriorStats">{warriorStats}</p></label>
+          <label className="charImgWarrior" htmlFor="warrior"><img src={"warrior.png"} alt="" />Warrior<span className="selectStats warriorStats">{warriorStats}</span></label>
           <input type="radio" id="ranger" name="character" value={"ranger"}/>
-          <label className="charImgRanger" htmlFor="ranger"><img src={"Ranger.png"} alt="" />Ranger<p className="selectStats rangerStats">{rangerStats}</p></label>
+          <label className="charImgRanger" htmlFor="ranger"><img src={"ranger.png"} alt="" />Ranger<span className="selectStats rangerStats">{rangerStats}</span></label>
           <input type="radio" id="mage" name="character" value={"mage"}/>
-          <label className="charImgMage" htmlFor="mage"><img src={"Mage.png"} alt="" />Mage<p className="selectStats mageStats">{mageStats}</p></label>
+          <label className="charImgMage" htmlFor="mage"><img src={"mage.png"} alt="" />Mage<span className="selectStats mageStats">{mageStats}</span></label>
           
         </form>
         <h2>Or</h2>
@@ -94,7 +92,7 @@ const GameMenu = function() {
           </form>
       <button 
         className="startGame"
-        onClick={handleGameStart}>
+        onClick={() => {handleGameStart(true)}}>
         start
       </button>
       </div>
