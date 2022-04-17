@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './sass/style.scss';
+import GameMenu from './components/GameMenu';
 
 function App() {
+
+  const [gameStart, setGameStart] = useState(false)
+
+  const handleGameStart = function(){
+    setGameStart(!gameStart)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>We Must Fight</h1>
+      <button 
+        className='startGameButton' 
+        type='button'
+        onClick={handleGameStart}>
+        {
+          gameStart === false ?
+          "START GAME" 
+          : "END GAME"
+        }
+      </button>
+      {
+        gameStart === true ?
+        <GameMenu />
+        : null
+      }
+    </>
   );
 }
 

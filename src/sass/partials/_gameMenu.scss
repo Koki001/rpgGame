@@ -1,0 +1,79 @@
+.characterSelect {
+  display: flex;
+  justify-content: center;
+  input {
+    visibility: hidden;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 50px;
+    height: 300px;
+    width: 200px;
+    border: 5px solid transparent;
+    &:hover{
+      cursor: pointer;
+      border: 5px solid green;
+    }
+  }
+  input:checked + label {
+    border: 5px solid green;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  label:hover > p {
+    opacity: 1;
+  }
+  label:hover > img {
+    opacity: 0.4;
+  }
+
+}
+.selectStats {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+}
+.difficultySelect {
+  display: flex;
+  justify-content: center;
+  input {
+    visibility: hidden;
+  }
+  label {
+    padding: 3px 50px;
+    margin: 0 10px;
+    margin-bottom: 50px;
+    border: 5px solid transparent;
+    &:hover {
+      cursor: pointer;
+      border: 5px solid green;
+    }
+  }
+
+  input:checked+label {
+    border: 5px solid green;
+  }
+
+}
+
+.characterImage {
+  height: 500px;
+  width: 340px;
+  margin-right: 50px;
+}
+.characterInfoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
