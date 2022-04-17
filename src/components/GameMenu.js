@@ -74,12 +74,13 @@ const GameMenu = function() {
           <label className="charImgMage" htmlFor="mage"><img src={"Mage.png"} alt="" />Mage<p className="selectStats mageStats">{mageStats}</p></label>
           
         </form>
-      </div>
+        <h2>Or</h2>
       <button 
         type="button"
         onClick={handleCreateCharacter}>
         create character
       </button>
+      </div>
       <div className="difficultySelectContainer">
         <h2>Select difficulty</h2>
           <form className="difficultySelect" action=""
@@ -91,12 +92,12 @@ const GameMenu = function() {
             <input type="radio" id="hard" name="difficulty" value={"hard"} />
             <label htmlFor="hard">hard</label>
           </form>
-      </div>
       <button 
         className="startGame"
         onClick={handleGameStart}>
         start
       </button>
+      </div>
     </>
     : gameStart === true ?
     <Playing 

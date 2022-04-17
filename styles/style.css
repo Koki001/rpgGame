@@ -235,6 +235,10 @@ body {
   text-align: center;
 }
 
+.characterSelectContainer {
+  margin-bottom: 50px;
+}
+
 .characterSelect {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,7 +265,8 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  margin-bottom: 50px;
+  background-color: black;
+  color: white;
   height: 300px;
   width: 200px;
   border: 5px solid transparent;
@@ -336,4 +341,16 @@ body {
       -ms-flex-align: center;
           align-items: center;
   text-align: left;
+}
+
+#easy + label {
+  background-color: greenyellow;
+}
+
+#medium + label {
+  background-color: yellow;
+}
+
+#hard + label {
+  background-color: red;
 }

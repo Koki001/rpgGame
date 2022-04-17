@@ -1,3 +1,6 @@
+.characterSelectContainer {
+  margin-bottom: 50px;
+}
 .characterSelect {
   display: flex;
   justify-content: center;
@@ -10,7 +13,8 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    margin-bottom: 50px;
+    background-color: black;
+    color: white;
     height: 300px;
     width: 200px;
     border: 5px solid transparent;
@@ -65,7 +69,6 @@
   }
 
 }
-
 .characterImage {
   height: 500px;
   width: 340px;
@@ -76,4 +79,13 @@
   justify-content: center;
   align-items: center;
   text-align: left;
+}
+#easy + label {
+  background-color: greenyellow;
+}
+#medium + label {
+  background-color: yellow;
+}
+#hard + label {
+  background-color: red;
 }
