@@ -26,7 +26,7 @@ function App() {
   }
   return (
     <>
-      <h1>We Must Fight</h1>
+      <h1>fightttt</h1>
       <button 
         className='startGameButton' 
         type='button'

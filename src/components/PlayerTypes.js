@@ -1,7 +1,7 @@
 // PlayerStats.js
 
 const Warrior = {
-  name: "Olaf",
+  name: "Fighter",
   class: "warrior",
   level: 1,
   health: 120,
@@ -12,7 +12,7 @@ const Warrior = {
   defense: 8
 }
 const Ranger = {
-  name: "Robin Hood",
+  name: "Archer",
   class: "ranger",
   level: 1,
   health: 100,
@@ -23,7 +23,7 @@ const Ranger = {
   defense: 5
 }
 const Mage = {
-  name: "Yennefer",
+  name: "Caster",
   class: "mage",
   level: 1,
   health: 80,
