@@ -389,12 +389,106 @@ body {
   width: 230px;
 }
 
+.player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .playerHP {
   height: 30px;
   background-color: green;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.hpContainer {
+.enemyHP {
+  height: 30px;
+  background-color: green;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerMana {
+  height: 30px;
+  background-color: rgb(0, 23, 128);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hpDisplay {
+  position: absolute;
+  margin: 0;
+  z-index: 100;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+}
+
+.hpDisplayE {
+  position: absolute;
+  margin: 0;
+  z-index: 100;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  color: red;
+}
+
+.manaDisplay {
+  position: absolute;
+  margin: 0;
+  z-index: 100;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+}
+
+.hpContainer,
+.hpContainerE {
   border: 2px solid black;
   height: 34px;
+  position: relative;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.manaContainer {
+  border: 2px solid black;
+  color: white;
+  font-weight: bolder;
+  height: 34px;
+  font-size: 24px;
+  position: relative;
 }

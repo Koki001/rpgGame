@@ -6,29 +6,71 @@ import { Attack } from "./BattleMechanics"
 import Player from "./Player"
 import Enemy from "./Enemy"
 
-
 const LevelOne = function(props) {
 
   const [turn, setTurn] = useState(true)
   const [opponent, setOpponent] = useState({})
   const [playerHP, setPlayerHP] = useState(props.game.character.health)
   const [enemyHP, setEnemyHP] = useState(opponent.health)
+  const [turnCount, setTurnCount] = useState(0)
+  const [playerMana, setPlayerMana] = useState(100)
+  const [enemyMana, setEnemyMana] = useState(100)
 
-  const handleAttack = function(){
-    console.log("attack")
-    setTurn(false)
-
-    setEnemyHP(enemyHP - props.game.character.attack.normal)
-
-  }
-  if (turn === false){
+  const enemyAttack = function(){
     setPlayerHP(playerHP - opponent.attack.normal)
     setTurn(true)
+    // setTurnCount(turnCount + 1)
   }
-  console.log(turn)
-  console.log("MAX ENEMY HEALTH", opponent.health)
-  console.log("CURRENT ENEMY HEALTH", enemyHP)
-  console.log("ATTACK DAMAGE", props.game.character.attack.normal)
+  const enemyHeal = function(){
+    setEnemyHP(enemyHP + opponent.heal)
+    setTurn(true)
+    // setTurnCount(turnCount + 1)
+  }
+  const enemySpecial = function(){
+    setPlayerHP(playerHP - opponent.attack.special)
+    setTurn(true)
+    // setTurnCount(turnCount + 1)
+  }
+
+  const handleAttack = function(){
+    if (turn === true){
+      setEnemyHP(enemyHP - props.game.character.attack.normal)
+      setTurn(false)
+      setTurnCount(turnCount + 1)
+    } 
+  }
+  useEffect(function() {
+    setTimeout(function() {
+      if (playerMana <= 90){
+        setPlayerMana(playerMana + 10)
+      }
+    }, 1500)
+  },[turnCount])
+  useEffect(function() {
+    if (turn === false) {
+
+      setTimeout(function() {
+        if (enemyMana <= 90){
+          setEnemyMana(enemyMana + 10)
+        }
+        if (enemyHP >= (opponent.health / 2)) {
+          enemyAttack()
+        } else if (enemyHP <= (opponent.health / 2) && enemyMana >= 60){
+          setEnemyMana(enemyMana - 60)
+          enemyHeal()
+        } else {
+          enemyAttack()
+        }
+      }, 1500)
+    }
+  }, [turn])
+  console.log(playerMana)
+  console.log(turnCount)
+  // console.log(opponent)
+  // console.log(turn)
+  // console.log("MAX ENEMY HEALTH", opponent.health)
+  // console.log("CURRENT ENEMY HEALTH", enemyHP)
+  // console.log("ATTACK DAMAGE", props.game.character.attack.normal)
 
   const handleSpecial = function () {
     console.log("Special")
@@ -41,6 +83,18 @@ const LevelOne = function(props) {
   const handleHeal = function () {
     console.log("Heal")
     setTurn(false)
+    if (playerMana >= 60){
+      setPlayerMana(playerMana - 60)
+      if (turn === true && (playerHP + props.game.character.heal) <= props.game.character.health) {
+        setPlayerHP(playerHP + props.game.character.heal)
+        setTurn(false)
+      } else if (playerHP + props.game.character.heal > props.game.character.health) {
+        setPlayerHP(props.game.character.health)
+      }
+    } else {
+      alert("not enough mana")
+      setTurn(true)
+    }
   }
   const handleRetreat = function () {
     console.log("Retreat")
@@ -63,8 +117,8 @@ const LevelOne = function(props) {
       <p>Difficulty: {props.game.difficulty}</p>
       <h2>{turn === true ? "Your Turn" : "Enemy's Turn"}</h2>
       <div className="battleContainer">
-        <Player game={props.game} hp={playerHP}/>
-        <Enemy enemy={opponent} hp={enemyHP}/>
+        <Player game={props.game} hp={playerHP} mana={playerMana}/>
+        <Enemy enemy={opponent} hp={enemyHP} mana={enemyMana}/>
       </div>
       <div className="fightActions">
         <button type="button"

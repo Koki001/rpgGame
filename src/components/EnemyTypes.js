@@ -10,6 +10,7 @@ const EnemyMelee = {
     special: 10,
   },
   defense: 8,
+  heal: 10,
   img: "enemyMelee.png"
 }
 const EnemyRanged = {
@@ -22,6 +23,7 @@ const EnemyRanged = {
     special: 15,
   },
   defense: 5,
+  heal: 10,
   img: "enemyRanged.png"
 }
 const EnemyMage = {
@@ -34,6 +36,7 @@ const EnemyMage = {
     special: 20,
   },
   defense: 3,
+  heal: 15,
   img: "enemyMage.png"
 }
 

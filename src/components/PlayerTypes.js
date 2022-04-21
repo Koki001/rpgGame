@@ -9,7 +9,8 @@ const Warrior = {
     normal: 5,
     special: 10,
   },
-  defense: 8
+  defense: 8,
+  heal: 15,
 }
 const Ranger = {
   name: "Archer",
@@ -20,18 +21,21 @@ const Ranger = {
     normal: 7,
     special: 15,
   },
-  defense: 5
+  defense: 5,
+  heal: 15,
 }
 const Mage = {
   name: "Caster",
   class: "mage",
   level: 1,
   health: 80,
+  mana: 100,
   attack: {
     normal: 9,
     special: 20,
   },
-  defense: 3
+  defense: 3,
+  heal: 15,
 }
 
 export {Warrior, Ranger, Mage}
