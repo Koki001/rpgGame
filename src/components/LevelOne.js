@@ -33,11 +33,16 @@ const LevelOne = function(props) {
   }
 
   const handleAttack = function(){
-    if (turn === true){
-      setEnemyHP(enemyHP - props.game.character.attack.normal)
-      setTurn(false)
-      setTurnCount(turnCount + 1)
-    } 
+    if (turn === true && enemyHP > props.game.character.attack.normal){
+        setEnemyHP(enemyHP - props.game.character.attack.normal)
+        setTurn(false)
+        setTurnCount(turnCount + 1)
+      } else {
+        setEnemyHP(0)
+        setTimeout(function() {
+          props.win(false)
+        }, 500);
+      }
   }
   useEffect(function() {
     setTimeout(function() {

@@ -31,7 +31,7 @@ const Mage = {
   health: 80,
   mana: 100,
   attack: {
-    normal: 9,
+    normal: 42,
     special: 20,
   },
   defense: 3,

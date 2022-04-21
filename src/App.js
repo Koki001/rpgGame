@@ -24,6 +24,10 @@ function App() {
   const handleGame = function(e) {
     setGame(e)
   }
+  const handleWin = function(){
+    setGameStart(false)
+    setBattle(false)
+  }
   return (
     <>
       <h1>fightttt</h1>
@@ -49,7 +53,7 @@ function App() {
       }
       {
         adventureStart === true && battle === true ?
-        <Adventure game={game}/>
+        <Adventure game={game} win={handleWin}/>
         : null
       }
     </>

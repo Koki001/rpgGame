@@ -19,6 +19,13 @@ const Adventure = function(props) {
     setStartLevel(true)
   }
 
+  const handleWin = function() {
+    alert("GOOD JOB YOU WON")
+    setTimeout(function() {
+      props.win(false)
+    }, 100)
+  }
+
   return (
     <>
     {
@@ -28,7 +35,7 @@ const Adventure = function(props) {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quisquam consequatur reiciendis animi necessitatibus, minus temporibus non ipsum optio, nostrum pariatur quo? Et, magni ullam nihil eos odit animi quia officiis iste ipsa vitae? Tempora ipsa eaque quia similique mollitia inventore ducimus. Nisi laboriosam, ullam est incidunt hic aliquid maxime.</p>
         <button type="button" onClick={handleStart}>OK</button>
       </>
-      : <LevelOne game={game}/>
+      : <LevelOne game={game} win={handleWin}/>
     }
     </>
   )
